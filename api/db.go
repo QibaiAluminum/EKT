@@ -1,5 +1,5 @@
 package api
-
+//	删除无用api
 import (
 	"bytes"
 	"encoding/hex"

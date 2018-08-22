@@ -1,5 +1,5 @@
 package api
-
+//	重构交易池和用户事件逻辑，优化TPS
 import (
 	"encoding/hex"
 	"github.com/EducationEKT/EKT/blockchain_manager"

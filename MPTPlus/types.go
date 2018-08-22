@@ -1,5 +1,5 @@
 package MPTPlus
-
+//adaptor package refact
 import (
 	"sort"
 	"sync"

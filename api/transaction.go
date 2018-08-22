@@ -1,5 +1,5 @@
 package api
-
+//	将共识算法修改为dbft
 import (
 	"encoding/json"
 	"fmt"
@@ -22,15 +22,10 @@ import (
 )
 
 func init() {
-	x_router.Get("/transaction/api/fee", fee)
 	x_router.Post("/transaction/api/newTransaction", broadcastTx, newTransaction)
 	x_router.Get("/transaction/api/queueTxs", queueTxs)
 	x_router.Get("/transaction/api/blockTxs", blockTxs)
 	x_router.Get("/transaction/api/status", txStatus)
-}
-
-func fee(req *x_req.XReq) (*x_resp.XRespContainer, *x_err.XErr) {
-	return x_resp.Return(blockchain_manager.GetMainChain().GetLastBlock().Fee, nil)
 }
 
 func queueTxs(req *x_req.XReq) (*x_resp.XRespContainer, *x_err.XErr) {
@@ -112,7 +107,7 @@ func broadcastTx(req *x_req.XReq) (*x_resp.XRespContainer, *x_err.XErr) {
 
 func synchronizeTransaction(txId []byte) {
 	for _, peer := range param.MainChainDelegateNode {
-		if value, err := peer.GetDBValue(hex.EncodeToString(txId)); err != nil {
+		if value, err := peer.GetDBValue(txId); err != nil {
 			db.GetDBInst().Set(txId, value)
 		}
 	}

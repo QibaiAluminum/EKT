@@ -1,5 +1,5 @@
 package MPTPlus
-
+//	默克尔字典树使用IKVDatabase接口代替直接使用结构体
 import (
 	"bytes"
 	"encoding/json"

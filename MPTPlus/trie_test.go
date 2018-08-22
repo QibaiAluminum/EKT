@@ -1,5 +1,5 @@
 package MPTPlus
-
+//refact code
 import (
 	"bytes"
 	"encoding/hex"
